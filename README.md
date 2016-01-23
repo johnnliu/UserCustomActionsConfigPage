@@ -40,7 +40,7 @@ I also brand it to look a bit like SharePoint.  Just a bit.
 
 # Install
 
-* Drop it into a SiteAssets or SitePages library.
+* Drop [configure-page.aspx](dist/configure-page.aspx) into a SiteAssets or SitePages library.
 * The JavaScript on the page detects and loads some dependencies (jQuery, SP.js etc). 
 * Provided you have site collection permissions, it'll list all existing User Custom Actions
 * You can specify a filename (including any subfolders like spg/hello.js) and give it a sequence number (default to 1000).  Then you can install a Custom Action to Site Collection or Current Web.  All via the magic of JavaScript.
