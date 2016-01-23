@@ -6,7 +6,7 @@ The following is what I consider to be the easiest way to add script to your Sha
 
 # Why use User Custom Actions?
 
-Because this is a great technique because it lets you:
+This is a great technique because it lets you:
 
 * Add JavaScript anywhere - scoped to Site Collection or Site.
 * Add CSS via JavaScript
