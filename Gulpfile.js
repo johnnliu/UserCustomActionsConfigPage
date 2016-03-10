@@ -25,9 +25,9 @@ gulp.task('config', function() {
 
 
 
-gulp.task('clean:build', function() {
+gulp.task('clean:dist', function() {
     // You can use multiple globbing patterns as you would with `gulp.src`
-    return del(['build']);
+    return del(['dist']);
 });
 
 // Lint the files to catch any issues
@@ -47,23 +47,23 @@ gulp.task('build', function() {
         transform: function (filePath, file) {
             // return file contents as string 
             return '<script type="text/javascript">\r\n' + file.contents.toString('utf8') + '</script>';
-        },
+        }
     }))
     .pipe(inject(gulp.src(['./src/configure-page.css']), {
         starttag: '<!-- inject:head:css -->',
         transform: function (filePath, file) {
             // return file contents as string 
             return '<style type="text/css">\r\n' + file.contents.toString('utf8') + '</style>';
-        },
+        }
     }))
-    .pipe(gulp.dest('./dest'));
+    .pipe(gulp.dest('./dist'));
     
 });
 
 
 // Default task(s).
 gulp.task('default', [
-    'clean:build',
+    'clean:dist',
     'lint',
     'build'
 ]);
