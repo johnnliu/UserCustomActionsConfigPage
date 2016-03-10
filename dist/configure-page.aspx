@@ -30,6 +30,7 @@
 
                 findHostWebUrl(document.location.pathname).then(function (url) {
                     hostweburl = url;
+                    if (hostweburl == "/") hostweburl = ""; // blank it if top web
 
                     // The SharePoint js files URL are in the form:
                     // web_url/_layouts/15/resource
@@ -66,7 +67,7 @@
                         var options = {
                             "appIconUrl": hostweburl + "/_layouts/15/IMAGES/LINKS.GIF",
                             "appTitle": "Custom Actions Configuration",
-                            "siteUrl": hostweburl,
+                            "siteUrl": (hostweburl || "/"),
                             // The onCssLoaded event allows you to
                             // specify a callback to execute when the
                             // chrome resources have been loaded.
