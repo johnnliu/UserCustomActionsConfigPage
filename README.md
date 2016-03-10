@@ -4,6 +4,11 @@ The following is what I consider to be the easiest way to add script to your Sha
 
 "Inject JavaScript to any Site or Site Collection via a User Custom Action's ScriptLink property."
 
+# 2016-03-10 Update
+
+* Add Script ID - this enables [PnP SharePoint 2013/2016 Responsive UI](https://github.com/OfficeDev/PnP-Tools/tree/master/Solutions/SharePoint.UI.Responsive) to be installed by [copying 3 files](http://johnliu.net/blog/2016/3/u1o3sximl08l60c3k0xzz4ep2fof2n)!
+* Dropped /SiteAssets/ in path, this means you can add deep nested paths into other libraries, or even subsites.  ~sitecollection/ + url  (before was ~sitecollection/SiteAssets/ + url
+
 # Why use User Custom Actions?
 
 This is a great technique because it lets you:
@@ -56,6 +61,8 @@ hello.js is sequence 1000.  hello1.js is sequence 999.
 
 # Related Links
 
+* [SP2013/2016 Responsive-UI and UserCustomActionsConfigPage](http://johnliu.net/blog/2016/3/u1o3sximl08l60c3k0xzz4ep2fof2n)
+* [SharePoint 2013/2016 Responsive UI](https://github.com/OfficeDev/PnP-Tools/tree/master/Solutions/SharePoint.UI.Responsive)
 * http://johnliu.net/blog/2015/12/the-safest-future-proof-way-to-brand-your-sharepoint-and-sharepoint-online
 * https://github.com/OfficeDev/PnP/tree/master/Solutions/Core.CDNManager
 * https://github.com/OfficeDev/PnP/tree/master/Samples/Core.ManageUserCustomAction
