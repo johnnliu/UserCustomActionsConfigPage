@@ -4,6 +4,10 @@
     <title>Custom Actions Configuration</title>
     <script src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js" type="text/javascript"></script>
     <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <!-- inject:head:js -->
+    <!-- endinject -->
+    <!-- inject:head:css -->
+    <!-- endinject -->
 </head>
 <body style="display: none">
 
