@@ -1,0 +1,30 @@
+{
+  "name": "user-custom-actions-config-page",
+  "version": "1.0.0",
+  "description": "The easiest way to add script to your SharePoint and SharePoint Onliney",
+  "main": "Gulpfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnliu/UserCustomActionsConfigPage.git"
+  },
+  "author": "John N Liu",
+  "license": "MIT",
+  "copyright": "Copyright - John Liu @ SharePoint Gurus sharepointgurus.net johnliu.net",
+  "bugs": {
+    "url": "https://github.com/johnnliu/UserCustomActionsConfigPage/issues"
+  },
+  "homepage": "https://github.com/johnnliu/UserCustomActionsConfigPage#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "fs": "0.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7"
+  }
+}

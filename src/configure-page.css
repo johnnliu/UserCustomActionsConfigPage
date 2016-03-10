@@ -1,0 +1,12 @@
+button {
+    width: 150px;
+    margin-bottom: 5px;
+}
+
+.left {
+    float: left;
+}
+
+.clear-left {
+    clear: left;
+}
