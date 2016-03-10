@@ -53,6 +53,7 @@
                         var getSite = webContext.executeQueryPromise();
                         getSite.then(function(){
                             hostsiteurl = webContext.get_site().get_serverRelativeUrl();
+                            if (hostsiteurl == "/") hostsiteurl = ""; // blank it if top web
                         });
                         
                     });
