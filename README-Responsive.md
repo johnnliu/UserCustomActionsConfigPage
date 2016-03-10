@@ -26,9 +26,15 @@ Injected Script (which finds and inserts the CSS too)
 
 Responsive UI Screenshots
 
+SharePoint 2013 On-Premises
+
 ![Results](docs/ucacp-r5.png)
 
 ![Results](docs/ucacp-r6.png)
+
+SharePoint Online
+
+![Results](docs/ucacp-r9.png)
 
 # Uninstall
 
