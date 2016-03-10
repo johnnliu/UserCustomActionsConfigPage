@@ -14,13 +14,15 @@
         (function ($, spg) {
 
             var hostweburl;
+            var hostsiteurl;
+            var srcid;
             var srcurl;
             var srcsequence;
 
             //load the SharePoint resources
             $(document).ready(function () {
                 // get src of script we want to install/uninstall
-                srcurl = ($.getUrlVar("src") ? decodeURIComponent($.getUrlVar("src")) : 0) || "hello.js";
+                srcurl = ($.getUrlVar("src") ? decodeURIComponent($.getUrlVar("src")) : 0) || "SiteAssets/hello.js";
                 srcsequence = 1000;
 
                 $("#scriptlink-name").val(srcurl);
@@ -45,6 +47,14 @@
                             this.executeQueryAsync(function(){ deferred.resolve(arguments); }, function(){ deferred.reject(arguments); });
                             return deferred.promise();
                         };                        
+
+                        var webContext = SP.ClientContext.get_current();
+                        webContext.load(webContext.get_site());
+                        var getSite = webContext.executeQueryPromise();
+                        getSite.then(function(){
+                            hostsiteurl = webContext.get_site().get_serverRelativeUrl();
+                        });
+                        
                     });
                     $.when(
                         $.getScript(scriptbase + "SP.UI.Controls.js")
@@ -186,13 +196,29 @@
                 webContext.load(userCustomActions);
 
                 srcurl = $("#scriptlink-name").val();
+                srcid = $("#scriptlink-id").val();
                 srcsequence = parseInt($("#scriptlink-sequence").val()) || 1000;
 
                 var action = userCustomActions.add();
 
                 action.set_location("ScriptLink");
                 action.set_title(srcurl);
-                action.set_scriptSrc("~sitecollection/SiteAssets/" + srcurl);
+                if (srcid) {
+                    var block = [
+                        "(function(){",
+                            "var head1 = document.getElementsByTagName('head')[0];", 
+                            "var script1 = document.createElement('script');",
+                            "script1.type = 'text/javascript';",
+                            "script1.src = '" + hostsiteurl + "/" + srcurl + "';",
+                            "script1.id = '" + srcid + "';",
+                            "head1.appendChild(script1);",
+                        "})();"                        
+                    ].join("");
+                    action.set_scriptBlock(block);
+                }
+                else {
+                    action.set_scriptSrc("~sitecollection/" + srcurl);
+                }
                 action.set_sequence(srcsequence);
                 action.update();
 
@@ -225,7 +251,7 @@
                     var i = 0, count = userCustomActions.get_count(), action = null;
                     for (i = count - 1; i >= 0; i--) {
                         action = userCustomActions.get_item(i);
-                        if (action.get_scriptSrc() == "~sitecollection/SiteAssets/" + srcurl) {
+                        if (action.get_scriptSrc() == "~sitecollection/" + srcurl || action.get_title() == srcurl) {
                             action.deleteObject();
                         }
                     }
@@ -272,11 +298,18 @@
 
         <br />
 
-        <div style="float:left; height:100px;">
-            <input type="text" id="scriptlink-name" />
-            <input type="number" id="scriptlink-sequence" value="1000" />
+        <div style="float:left; height:20px;">
+            <label for="scriptlink-id" style="display:block;float:left;width:165px;">ID (usually leave blank)</label>
+            <label for="scriptlink-name" style="display:block;float:left;width:315px;">Url (e.g. SiteAssets/hello.js)</label>
+            <label for="scriptlink-sequence" style="display:block;float:left;width:165px;">Sequence (e.g. 1000)</label>
         </div>
-        <div style="float:left;">
+        
+        <div style="clear:left; float:left; min-height:30px;">
+            <input type="text" id="scriptlink-id" style="width:150px;" />
+            <input type="text" id="scriptlink-name" style="width:300px;" />
+            <input type="number" id="scriptlink-sequence" style="width:150px;" value="1000" />
+        </div>
+        <div style="clear:left; float:left;">
             <button id="install-site-user-custom-action" type="button">Install Site Collection</button>
             <button id="uninstall-site-user-custom-action" type="button">Uninstall Site Collection</button>
             
