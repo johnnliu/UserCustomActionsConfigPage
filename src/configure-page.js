@@ -1,4 +1,3 @@
-
 /*
  * Copyright - John Liu @ SharePoint Gurus sharepointgurus.net johnliu.net
  * You are not allowed to remove this header, but you can update the page as you see fit :-)

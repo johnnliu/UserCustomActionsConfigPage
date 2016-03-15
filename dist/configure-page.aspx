@@ -6,7 +6,6 @@
     <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js" type="text/javascript"></script>
     <!-- inject:head:js -->
     <script type="text/javascript">
-
 /*
  * Copyright - John Liu @ SharePoint Gurus sharepointgurus.net johnliu.net
  * You are not allowed to remove this header, but you can update the page as you see fit :-)
