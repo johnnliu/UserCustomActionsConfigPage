@@ -1,10 +1,10 @@
-"use strict";
 
 /*
  * Copyright - John Liu @ SharePoint Gurus sharepointgurus.net johnliu.net
  * You are not allowed to remove this header, but you can update the page as you see fit :-)
  */
 (function ($, spg) {
+    "use strict";
 
     var hostweburl;
     var hostsiteurl;
@@ -210,8 +210,24 @@
 
         action.set_location("ScriptLink");
         action.set_title(srcurl);
-        if (srcid) {
-            var block = [
+        var isCss = /\.css$/gi.test(srcurl);
+        var block;
+        if (isCss) {
+            block = [
+                "(function(){",
+                "var head1 = document.getElementsByTagName('head')[0];",
+                "var link1 = document.createElement('link');",
+                "link1.type = 'text/css';",
+                "link1.rel = 'stylesheet';",
+                "link1.href = '" + hostsiteurl + "/" + srcurl + "';",
+                (srcid ? "link1.id = '" + srcid + "';" : ""),
+                "head1.appendChild(link1);",
+                "})();"
+            ].join("");
+            action.set_scriptBlock(block);
+        }
+        else if (srcid) {
+            block = [
                 "(function(){",
                 "var head1 = document.getElementsByTagName('head')[0];",
                 "var script1 = document.createElement('script');",
@@ -271,4 +287,4 @@
         return p2;
     };
 
-})(jQuery, window.spg = window.spg || {});
+})(window.jQuery, window.spg = window.spg || {});

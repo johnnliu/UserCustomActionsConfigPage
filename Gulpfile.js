@@ -56,7 +56,7 @@ gulp.task('build', function() {
             return '<style type="text/css">\r\n' + file.contents.toString('utf8') + '</style>';
         },
     }))
-    .pipe(gulp.dest('./dest'));
+    .pipe(gulp.dest('./dist'));
     
 });
 
