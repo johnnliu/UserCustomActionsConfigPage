@@ -226,7 +226,7 @@
                 "var link1 = document.createElement('link');",
                 "link1.type = 'text/css';",
                 "link1.rel = 'stylesheet';",
-                "link1.href = '" + hostsiteurl + "/" + srcurl + "';",
+                "link1.href = '" + hostweburl + "/" + srcurl + "';",
                 (srcid ? "link1.id = '" + srcid + "';" : ""),
                 "head1.appendChild(link1);",
                 "})();"
@@ -239,7 +239,7 @@
                 "var head1 = document.getElementsByTagName('head')[0];",
                 "var script1 = document.createElement('script');",
                 "script1.type = 'text/javascript';",
-                "script1.src = '" + hostsiteurl + "/" + srcurl + "';",
+                "script1.src = '" + hostweburl + "/" + srcurl + "';",
                 "script1.id = '" + srcid + "';",
                 "head1.appendChild(script1);",
                 "})();"
